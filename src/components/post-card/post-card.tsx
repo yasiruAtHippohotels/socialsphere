@@ -7,18 +7,21 @@ function PostCard() {
   return (
     <div>
       <div>
-        <div>
-          <Image
-            src="https://images.pexels.com/photos/19845816/pexels-photo-19845816/free-photo-of-aerial-view-of-a-river-with-snow-on-the-surface.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
-            width={200}
-            height={200}
-            alt=""
-          />
-        </div>
         <span>01.01.2024</span>
       </div>
       <div>
-        <h1>Title</h1>
+        <img
+          src="https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
+          alt="artical image"
+          className={styles.image}
+        />
+        <p>
+          By <span className="text-[#9B9B9B]">TOMAS LAURINAVICIUS</span>{" "}
+          published in <span className="text-[#9B9B9B]">05/12/2023</span>
+        </p>
+        <h1 className={styles.headline}>
+          How to Migrate from Wix to WordPress (Complete Guide)
+        </h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, itaque
           in voluptatum omnis possimus magnam distinctio, molestias quod

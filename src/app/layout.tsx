@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="container bg-stone-300">
+        <div className="container bg-[#FFFFFF]">
           <h1 className="font-bold text-4xl">This is the main layout</h1>
           <Navbar />
           {children}

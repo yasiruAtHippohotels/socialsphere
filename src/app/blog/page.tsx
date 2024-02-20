@@ -6,9 +6,6 @@ function BlogPage() {
   return (
     <div>
       <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
     </div>
   );
 }
