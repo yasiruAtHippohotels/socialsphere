@@ -1,15 +1,28 @@
-import React from "react";
+// "use client";
+import React, { useEffect, useState } from "react";
 import styles from "./contact.module.css";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+// import HydrationTest from "@/components/hydration-test";
+
+// const HydrationTestNoSSR = dynamic(
+//   () => import("@/components/hydration-test"),
+//   {
+//     ssr: false,
+//   }
+// );
 
 function ContactPage() {
+  // const a = Math.random();
+  // console.log(a);
+
   return (
     <div>
       <div>
         <Image src="/assets/contact.png" width={500} height={500} alt="" />
       </div>
       <div>
-        {/* <HydrationTestNoSSR/> */}
+        {/* <HydrationTestNoSSR /> */}
         {/* <div suppressHydrationWarning>{a}</div> */}
         <form action="" className="flex gap-2 flex-col items-center">
           <input type="text" placeholder="Name and Surname" />

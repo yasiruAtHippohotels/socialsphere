@@ -3,35 +3,43 @@ import styles from "./post-card.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-function PostCard() {
+interface Post {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+}
+
+interface PostCardProps {
+  post: Post; // Expect a Post object as a prop
+}
+
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
   return (
     <div>
       <div>
-        <span>01.01.2024</span>
+        <span>{post.id}</span>
       </div>
       <div>
-        <img
-          src="https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
-          alt="artical image"
+        <Image
+          src={
+            "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
+          }
+          alt={post.title}
           className={styles.image}
+          width={400}
+          height={300}
         />
         <p>
-          By <span className="text-[#9B9B9B]">TOMAS LAURINAVICIUS</span>{" "}
-          published in <span className="text-[#9B9B9B]">05/12/2023</span>
+          {/* By <span className="text-[#9B9B9B]">{post.author}</span> published in{" "}
+          <span className="text-[#9B9B9B]">{post.date}</span> */}
         </p>
-        <h1 className={styles.headline}>
-          How to Migrate from Wix to WordPress (Complete Guide)
-        </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, itaque
-          in voluptatum omnis possimus magnam distinctio, molestias quod
-          eligendi sed illum accusantium dolore soluta nostrum expedita, cumque
-          voluptas corporis praesentium!
-        </p>
-        <Link href="/blog/post">READ MORE</Link>
+        <h1 className={styles.headline}>{post.title}</h1>
+        <p>{post.body}</p>
+        <Link href={`/blog/${post.id}`}>READ MORE</Link>
       </div>
     </div>
   );
-}
+};
 
 export default PostCard;

@@ -3,6 +3,8 @@ import React from "react";
 import styles from "./about.module.css";
 
 function AboutPage() {
+  console.log("lets check where its works");
+
   return (
     <div>
       <div>

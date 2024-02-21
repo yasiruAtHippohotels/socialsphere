@@ -2,7 +2,18 @@ import React, { Suspense } from "react";
 import styles from "./singlePost.module.css";
 import Image from "next/image";
 
-function SinglePostPage() {
+const getData = async (slug: string) => {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  return await res.json();
+};
+
+const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+  const post = await getData(slug);
+
   return (
     <div>
       <div>
@@ -15,22 +26,20 @@ function SinglePostPage() {
       </div>
 
       <div>
-        <h1>Title</h1>
+        <h1 className="">
+          {post.title}
+          <span className="text-xl">({post.id})</span>
+        </h1>
         <div>
           <div>
             <span>Published</span>
             <span>2/2/2024</span>
           </div>
         </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-          repudiandae, commodi modi voluptate vel facilis eveniet id neque
-          inventore ab dolor beatae officiis praesentium quos reiciendis ad
-          libero ipsum tenetur!
-        </div>
+        <div>{post.body}</div>
       </div>
     </div>
   );
-}
+};
 
 export default SinglePostPage;
