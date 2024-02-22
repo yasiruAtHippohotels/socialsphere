@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import styles from "./singlePost.module.css";
 import Image from "next/image";
+import PostUser from "@/components/post-user/post-user";
 
 const getData = async (slug: string) => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
@@ -23,6 +24,12 @@ const SinglePostPage = async ({ params }: { params: { slug: string } }) => {
           height={600}
           alt=""
         />
+
+        {post && (
+          <Suspense fallback={<div>Loading....</div>}>
+            <PostUser userId={post.userId} />
+          </Suspense>
+        )}
       </div>
 
       <div>
