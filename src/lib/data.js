@@ -1,3 +1,4 @@
+import { log } from "console";
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { unstable_noStore as noStore } from "next/cache";
@@ -18,7 +19,15 @@ import { unstable_noStore as noStore } from "next/cache";
 export const getPosts = async () => {
   try {
     connectToDb();
+
     const posts = await Post.find();
+
+    if (posts.length === 0) {
+      console.log("No posts found.");
+    } else {
+      console.log(`Fetching ${posts.length} posts`);
+    }
+
     return posts;
   } catch (err) {
     console.log(err);

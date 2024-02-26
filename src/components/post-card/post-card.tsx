@@ -7,7 +7,9 @@ interface Post {
   userId: number;
   id: number;
   title: string;
-  body: string;
+  desc: string;
+  img: string;
+  slug: string;
 }
 
 interface PostCardProps {
@@ -21,22 +23,24 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         <span>{post.id}</span>
       </div>
       <div>
-        <Image
-          src={
-            "https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_1280.jpg"
-          }
-          alt={post.title}
-          className={styles.image}
-          width={400}
-          height={300}
-        />
+        {post.img && (
+          <div>
+            <Image
+              src={post.img}
+              alt={post.title}
+              className={styles.image}
+              width={400}
+              height={300}
+            />
+          </div>
+        )}
         <p>
           {/* By <span className="text-[#9B9B9B]">{post.author}</span> published in{" "}
           <span className="text-[#9B9B9B]">{post.date}</span> */}
         </p>
         <h1 className={styles.headline}>{post.title}</h1>
-        <p>{post.body}</p>
-        <Link href={`/blog/${post.id}`}>READ MORE</Link>
+        <p>{post.desc}</p>
+        <Link href={`/blog/${post.slug}`}>READ MORE</Link>
       </div>
     </div>
   );

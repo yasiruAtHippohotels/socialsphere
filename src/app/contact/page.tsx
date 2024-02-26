@@ -12,6 +12,11 @@ import dynamic from "next/dynamic";
 //   }
 // );
 
+export const metadata = {
+  title: "Contect Page",
+  description: "Contact description",
+};
+
 function ContactPage() {
   // const a = Math.random();
   // console.log(a);
